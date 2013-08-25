@@ -357,7 +357,7 @@ void ServerImpl::onReadComplete_Inturrupted(ManagedSocket * socket, const boost:
 
 void ServerImpl::onReadComplete(ManagedSocket * socket, const boost::system::error_code & ec, size_t bytes) {
 	if (ec){
-		onReadComplete_Inturrupted(socket, ec);
+		return onReadComplete_Inturrupted(socket, ec);
 	}
 	switch (socket->readState) {
 		case SocketReadState::readHeader:

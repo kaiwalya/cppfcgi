@@ -18,13 +18,13 @@ project(libfcgi)
 #find_library(cppa_library cppa ${cppa_install_dir})
 
 #boost
-find_package(Boost 1.54 COMPONENTS program_options REQUIRED )
+find_package(Boost 1.54 COMPONENTS system REQUIRED )
 
 include_directories(cxx/include)
 include_directories(${Boost_INCLUDE_DIRS})
 
 set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
-set(CMAKE_EXE_LINKER_FLAGS "-std=c++11 -stdlib=libc++ -L/usr/local/lib -lboost_system -lboost_serialization")
+set(CMAKE_EXE_LINKER_FLAGS "-std=c++11 -stdlib=libc++")
 
 set(libfcgi_srcs ${libfcgi_srcs} cxx/include/komm/fcgi.hpp)
 set(libfcgi_srcs ${libfcgi_srcs} cxx/source/fcgi.cpp)
@@ -32,7 +32,7 @@ set(libfcgi_srcs ${libfcgi_srcs} cxx/source/fcgi.cpp)
 set(libfcgi_libs ${libfcgi_libs} libfcgi)
 #set(libfcgi_libs ${libfcgi_libs} ${cppa_library})
 set(libfcgi_libs ${libfcgi_libs} ${Boost_LIBRARIES})
-message("XXX ${Boost_LIBRARIES}")
+#message("XXX ${Boost_LIBRARIES}")
 add_library(libfcgi ${libfcgi_srcs})
 #add_dependencies(libfcgi libcppa)
 add_executable(libfcgi_test cxx/source/libfcgi_test.cpp)

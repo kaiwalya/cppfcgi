@@ -25,7 +25,7 @@ public:
 	}
 	void onHeaders(std::map<std::string, std::string> & headers) {
 		for (auto & tuple : headers) {
-			std::cout << tuple.first << ":" << tuple.second;
+			std::cout << tuple.first << ":" << tuple.second << std::endl;
 		}
 	}
 };
@@ -118,8 +118,8 @@ int main()
 		Server s;
 		
 		std::thread t([&s](){
-			std::this_thread::sleep_for(std::chrono::seconds(4));
-			s.postAbort();
+			//std::this_thread::sleep_for(std::chrono::seconds(4));
+			//s.postAbort();
 		});
 		s.run();
 		t.join();
